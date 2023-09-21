@@ -50,6 +50,9 @@
     $(".draggable-element").draggable({
       distance: 30
     });
+    $(".resizable-element").resizable({
+      distance: 30
+    });
     
     // Prevent text highlight on drag start
     $(".draggable-element").on("touchstart", function(e){
@@ -58,6 +61,22 @@
   
     // Listen for touch and mouse events
     $(".draggable-element")
+      .on("touchstart mousedown", function(e){
+        // Drag start logic
+      })
+      .on("touchmove mousemove", function(e){
+        // Dragging logic
+      })  
+      .on("touchend mouseup", function(e){
+        // Drag end logic
+      });
+    // Prevent text highlight on drag start
+    $(".resizable-element").on("touchstart", function(e){
+      e.preventDefault(); 
+    });
+  
+    // Listen for touch and mouse events
+    $(".resizable-element")
       .on("touchstart mousedown", function(e){
         // Drag start logic
       })
