@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .draggable-element{
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+    .resizable-element{
+      width: 100px;
+      height: 100px;
+      background-color: rgb(157, 126, 243);
+    }
+  </style>
+</head>
+<body>
+  <div class="draggable-element">Drag Me</div>
+
+  <div class="resizable-element">Resize Me</div>
+  // Include jQuery 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  // Include jQuery UI
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script> 
+  
+  // Include touch punch after jQuery UI
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+  
+  <script>
+  
+  $(function() {
+  
+    // Make element draggable
+    $(".draggable-element").draggable();
+  
+    // Make element resizable
+    $(".resizable-element").resizable();
+  
+    // Initialize touch punch on draggable
+    $(".draggable-element").touchPunch();
+  
+    // Initialize touch punch on resizable
+    $(".resizable-element").touchPunch();
+  
+    // Increase drag tolerance
+    $(".draggable-element").draggable({
+      distance: 30
+    });
+    
+    // Prevent text highlight on drag start
+    $(".draggable-element").on("touchstart", function(e){
+      e.preventDefault(); 
+    });
+  
+    // Listen for touch and mouse events
+    $(".draggable-element")
+      .on("touchstart mousedown", function(e){
+        // Drag start logic
+      })
+      .on("touchmove mousemove", function(e){
+        // Dragging logic
+      })  
+      .on("touchend mouseup", function(e){
+        // Drag end logic
+      });
+    
+  });
+  </script> 
+</body>
+</html>
