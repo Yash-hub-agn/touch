@@ -19,75 +19,62 @@
 </head>
 <body>
   <div class="draggable-element">Drag Me</div>
-
   <div class="resizable-element">Resize Me</div>
-  // Include jQuery 
+
+  <!-- Include jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   
-  // Include jQuery UI
+  <!-- Include jQuery UI -->
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script> 
   
-  // Include touch punch after jQuery UI
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+  <!-- Include touch punch after jQuery UI -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
   
   <script>
-  
-  $(function() {
-  
-    // Make element draggable
-    $(".draggable-element").draggable();
-  
-    // Make element resizable
-    $(".resizable-element").resizable();
-  
-    // Initialize touch punch on draggable
-    $(".draggable-element").touchPunch();
-  
-    // Initialize touch punch on resizable
-    $(".resizable-element").touchPunch();
-  
-    // Increase drag tolerance
-    $(".draggable-element").draggable({
-      distance: 30
-    });
-    $(".resizable-element").resizable({
-      distance: 30
-    });
-    
-    // Prevent text highlight on drag start
-    $(".draggable-element").on("touchstart", function(e){
-      e.preventDefault(); 
-    });
-  
-    // Listen for touch and mouse events
-    $(".draggable-element")
-      .on("touchstart mousedown", function(e){
-        // Drag start logic
-      })
-      .on("touchmove mousemove", function(e){
-        // Dragging logic
-      })  
-      .on("touchend mouseup", function(e){
-        // Drag end logic
+    $(function() {
+      // Make element draggable
+      $(".draggable-element").draggable();
+
+      // Make element resizable
+      $(".resizable-element").resizable();
+
+      // Initialize touch punch for the entire document
+      $(document).touchPunch();
+
+      // Increase drag tolerance
+      $(".draggable-element").draggable({
+        distance: 30
       });
-    // Prevent text highlight on drag start
-    $(".resizable-element").on("touchstart", function(e){
-      e.preventDefault(); 
-    });
-  
-    // Listen for touch and mouse events
-    $(".resizable-element")
-      .on("touchstart mousedown", function(e){
-        // Drag start logic
-      })
-      .on("touchmove mousemove", function(e){
-        // Dragging logic
-      })  
-      .on("touchend mouseup", function(e){
-        // Drag end logic
+
+      // Prevent text highlight on drag start
+      $(".draggable-element").on("touchstart", function(e){
+        e.preventDefault(); 
       });
-    
-  });
+
+      // Listen for touch and mouse events on draggable elements
+      $(".draggable-element")
+        .on("touchstart mousedown", function(e){
+          // Drag start logic
+        })
+        .on("touchmove mousemove", function(e){
+          // Dragging logic
+        })  
+        .on("touchend mouseup", function(e){
+          // Drag end logic
+        });
+        
+      // Listen for touch and mouse events on resizable elements
+      $(".resizable-element")
+        .on("touchstart mousedown", function(e){
+          // Resize start logic
+        })
+        .on("touchmove mousemove", function(e){
+          // Resizing logic
+        })  
+        .on("touchend mouseup", function(e){
+          // Resize end logic
+        });
+    });
   </script> 
 </body>
 </html>
